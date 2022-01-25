@@ -7,9 +7,7 @@ function getSpeciesByIds(...ids) {
   if (ids[0] === undefined) {
     return array;
   }
-  for(const id of ids) {
-    array.push(data.species.find((element) => element.id === id));
-  }
+  ids.forEach((callback) => array.push(data.species.find((element) => element.id === callback)));
   return array;
 }
 

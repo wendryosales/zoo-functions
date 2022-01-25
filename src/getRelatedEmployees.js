@@ -18,12 +18,11 @@ function getRelatedEmployees(managerId) {
   if (isManager(managerId) === true) {
     const array = [];
     const colaboradores = data.employees.filter((cb) => cb.managers.includes(managerId));
-    for(const colaborador of colaboradores) {
-      array.push(`${colaborador.firstName} ${colaborador.lastName}`);
-    }
+    colaboradores.forEach((colab) => array.push(`${colab.firstName} ${colab.lastName}`));
     return array;
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
+
 console.log(getRelatedEmployees('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
 module.exports = { isManager, getRelatedEmployees };
