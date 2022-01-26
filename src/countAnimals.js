@@ -8,14 +8,17 @@ const countResidents = (array) => {
   return objeto;
 };
 
-function countAnimals(...animal) {
-  if (animal[0] === undefined) {
+function countAnimals(animal) {
+  if (animal === undefined) {
     return countResidents(data.species);
   }
-  if (animal[1] === undefined && animal[0] !== undefined) {
-    const findANimal = data.species.find((callback) => callback.name === animal[0]);
-    return findANimal.residents.length;
+  if (animal !== undefined) {
+    const findANimal = data.species.find((callback) => callback.name === animal.specie).residents;
+    if (animal.sex === undefined) {
+      return findANimal.length;
+    }
+    return findANimal.filter((callback) => callback.sex === animal.sex).length;
   }
 }
-console.log(countAnimals('giraffes'));
+
 module.exports = countAnimals;
